@@ -21,7 +21,7 @@ function Login() {
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email: email,
-        password: password
+        password:"si"
       });
 
       if (error) throw error;
@@ -58,16 +58,7 @@ function Login() {
               />
             </label>
 
-            <label className="input-label">
-              <span>Contraseña:</span>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="login-input"
-                required
-              />
-            </label>
+            
           </div>
 
           {error && <div className="login-error">{error}</div>}

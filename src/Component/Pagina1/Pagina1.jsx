@@ -45,7 +45,7 @@ export default function AudioInterface() {
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
-      window.location.href = '/login';
+      window.location.href = '/Home';
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
     }
