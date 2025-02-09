@@ -1,147 +1,89 @@
-/* Estilos generales del login */
-.login-container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .login-form {
-    width:100%;
-    max-width: 500px;
-    padding: 2rem;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .logo-container {
+/* Landing Page Styles */
+.landing-content {
     text-align: center;
-    margin-bottom: 2rem;
+    padding: 1rem 0;
   }
   
-  .App-logo {
-    max-width: 200px;
-    height: auto;
-    margin: 1rem auto;
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
   }
   
-  /* Animation for logo */
-  @keyframes logo-float {
+  .feature-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 15px;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  
+  .feature-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .feature-item h3 {
+    color: #fff;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+  }
+  
+  .feature-item p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  
+  /* Animación adicional para el botón */
+  .upload-button {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .upload-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .upload-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: rotate(45deg);
+    animation: buttonShine 3s infinite;
+  }
+  
+  @keyframes buttonShine {
     0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
+      left: -50%;
     }
     100% {
-      transform: translateY(0);
+      left: 150%;
     }
   }
-
-  .App-logo {
-    animation: logo-float 3s ease-in-out infinite;
-  }
   
-  .login-card {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    padding: 2rem;
-    backdrop-filter: blur(10px);
-  }
-  
-  .login-title {
-    text-align: center;
-    color: #fff;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-  }
-  
-  .input-group {
-    margin-bottom: 1.5rem;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-    align-content: center;
-  }
-  
-  .input-label {
-    display: block;
-    margin-bottom: 1rem;
-    color: #fff;
-  }
-  
-  .input-label span {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  
-  .login-input {
-    width: 100%;
-    padding: 12px 15px;
-    border-radius: 25px;
-    border: none;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    
-  }
-  
-  .login-input:focus {
-    outline: none;
-    background: rgba(255, 255, 255, 0.2);
-  }
-  
-  .login-button {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.1rem;
-    margin-top: 1rem;
-  }
-  
-  .login-error {
-    color: #ff4444;
-    background: rgba(255, 68, 68, 0.1);
-    padding: 1rem;
-    border-radius: 8px;
-    margin: 1rem 0;
-    text-align: center;
-  }
-  
-  .login-disclaimer {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
-  }
-  
-  /* Responsive */
+  /* Responsive Adjustments */
   @media (max-width: 768px) {
-    .login-form {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .feature-item {
       padding: 1rem;
     }
     
-    .login-card {
-      padding: 1.5rem;
-    }
-    
     .login-title {
-      font-size: 1.3rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .login-logo {
-      max-width: 150px;
-    }
-    
-    .login-input {
-      padding: 10px 12px;
-      font-size: 0.9rem;
-    }
-    
-    .login-button {
-      padding: 12px;
-      font-size: 1rem;
+      font-size: 2rem !important;
     }
   }

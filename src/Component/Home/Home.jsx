@@ -1,79 +1,46 @@
-import { useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
-import './Home.css'; // Archivo CSS separado
-import logoA from './Audifonoslogo.png';
+import { Link } from 'react-router-dom';
+import './Home.css'; // Reutilizamos los mismos estilos
+import logoA from '../Login/Audifonoslogo.png';
 
-
-function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
-  const supabase = createClient(
-    import.meta.env.VITE_APP_SUPABASE_URL, 
-    import.meta.env.VITE_APP_SUPABASE_ANON_KEY
-  );
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setError('');
-
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password:"si"
-      });
-
-      if (error) throw error;
-      window.location.href = '/Pagina1';
-
-    } catch (err) {
-      console.error(err);
-      setError('Credenciales incorrectas o error de conexión');
-    }
-  };
-
+function Landing() {
   return (
     <div className="container login-container">
-      <form onSubmit={handleSubmit} className="login-form">
-        
-      <div className="logo-container">
-        <img src={logoA} className="App-logo" alt="logo" />
-      </div>
+      <div className="login-form">
+        <div className="logo-container">
+          <img src={logoA} className="App-logo" alt="logo" />
+        </div>
 
         <div className="login-card">
-          <h4 className="login-title">Acceso a la Plataforma</h4>
-          <h5 className="login-disclaimer">Contenido multimedia para aprender con música</h5>
+          <h1 className="login-title">Bienvenido a SoundLearn</h1>
           
-          <div className="input-group">
-            <label className="input-label">
+          <div className="landing-content">
+            <p className="login-disclaimer" style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
+              Descubre un nuevo mundo de aprendizaje a través de la música y el contenido multimedia interactivo.
+            </p>
+
+            <div className="features-grid">
+              <div className="feature-item">
+                <h3>🎵 Aprende con Música</h3>
+                <p>Contenido educativo integrado en experiencias musicales únicas</p>
+              </div>
               
-                
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="login-input"
-                required
-              />
-            </label>
+              <div className="feature-item">
+                <h3>🎧 Contenido Exclusivo</h3>
+                <p>Contactanos para lecciones especializadas y material multimedia premium</p>
+              </div>
+              
+              <div className="feature-item">
+                <h3>📱 Multiplataforma</h3>
+                <p>Disponible en cualquier dispositivo, cuando y donde lo necesites</p>
+              </div>
+            </div>
 
-            
+            <a href="/Login" className="upload-button login-button" style={{ maxWidth: '200px', margin: '2rem auto' }} >Comenzar Ahora</a>
           </div>
-
-          {error && <div className="login-error">{error}</div>}
-
-          <button className="upload-button login-button" type="submit">
-            Acceder
-          </button>
-
-          <p className="login-disclaimer">
-            ¿No tienes acceso? Contacta al administrador
-          </p>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
 
-export default Login;
+export default Landing;

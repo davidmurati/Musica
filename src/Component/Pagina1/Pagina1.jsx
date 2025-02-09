@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import './Pagina1.css';
+import Navbar from '../Navbar/Navbar';
+import logoA from '../Login/Audifonoslogo.png';
 
 const supabase = createClient(
   import.meta.env.VITE_APP_SUPABASE_URL,
@@ -26,7 +28,7 @@ export default function AudioInterface() {
       setIsAuthenticated(!!session);
       
       if (!session) {
-        window.location.href = '/Home'; // Redirigir si no está autenticado
+        window.location.href = '/Login'; // Redirigir si no está autenticado
       }
     };
 
@@ -35,7 +37,7 @@ export default function AudioInterface() {
     // Escuchar cambios en la autenticación
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setIsAuthenticated(!!session);
-      if (!session) window.location.href = '/Home';
+      if (!session) window.location.href = '/Login';
     });
 
     return () => subscription?.unsubscribe();
@@ -45,7 +47,7 @@ export default function AudioInterface() {
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
-      window.location.href = '/Home';
+      window.location.href = '/Login';
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
     }
@@ -170,6 +172,18 @@ export default function AudioInterface() {
 
   return (
     <div className="container">
+
+      <header className="header">
+                <Navbar />
+                
+      </header>
+
+      <div className="logo-container">
+        <img src={logoA} className="App-logo" alt="logo" />
+      </div>
+
+    <div className="container">
+
       {/* Encabezado con botón flotante */}
       <div className="header-wrapper">
         <h1>🎵 Music Library</h1>
@@ -294,6 +308,6 @@ export default function AudioInterface() {
         </button>
         </div>
     </div>
-    
+    </div>
   );
 }

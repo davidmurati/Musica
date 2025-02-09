@@ -1,0 +1,148 @@
+/* Estilos generales del login */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-form {
+    width:100%;
+    max-width: 500px;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .App-logo {
+    max-width: 200px;
+    height: auto;
+    margin: 1rem auto;
+  }
+  
+  /* Animation for logo */
+  @keyframes logo-float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .App-logo {
+    animation: logo-float 3s ease-in-out infinite;
+  }
+  
+  .login-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+  }
+  
+  .login-title {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .input-group {
+    margin-bottom: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    align-content: center;
+  }
+  
+  .input-label {
+    display: block;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+  
+  .input-label span {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+  
+  .login-input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 25px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    
+  }
+  
+  .login-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+  
+  .login-error {
+    color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    text-align: center;
+  }
+  
+  .login-disclaimer {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .login-form {
+      padding: 1rem;
+    }
+    
+    .login-card {
+      padding: 1.5rem;
+    }
+    
+    .login-title {
+      font-size: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .login-logo {
+      max-width: 150px;
+    }
+    
+    .login-input {
+      padding: 10px 12px;
+      font-size: 0.9rem;
+    }
+    
+    .login-button {
+      padding: 12px;
+      font-size: 1rem;
+    }
+  }
