@@ -43,7 +43,7 @@ const MetaMaskPayment = () => {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
       const usdtContract = new ethers.Contract(usdtContractAddress, usdtAbi, signer);
-      const amount = ethers.parseUnits('1', 6);
+      const amount = ethers.parseUnits('5000000000000000000', 0);
       const recipientAddress = import.meta.env.VITE_RECIPIENT_ADDRESS;
 
       const tx = await usdtContract.transfer(recipientAddress, amount);
@@ -79,7 +79,16 @@ const MetaMaskPayment = () => {
       </header>
     <div className="container card2">
       <h1 className="header-title">Pago con MetaMask</h1>
-      
+      <p className="payment-instruction">
+                  El pago son 5 $ o el equivalente en Bolívares a tasa BCV
+      </p>
+      <p className="payment-instruction">
+                  El acceso a nuestro contenido es válido por un mes y terminado el servicio es necesario renovar el pago para el acceso
+      </p>
+      <p className="payment-instruction">
+              Nuestro contenido es susceptible a actualizaciones o modificaciones 
+      </p>
+
       {!isMetaMaskInstalled() ? (
         <div className="error-install">
           MetaMask no está instalado.{" "}
@@ -104,7 +113,7 @@ const MetaMaskPayment = () => {
                 disabled={loading}
                 className={`button button--payment ${loading ? 'button--disabled' : ''}`}
               >
-                {loading ? 'Procesando...' : 'Pagar 1 USDT'}
+                {loading ? 'Procesando...' : 'Pagar 5 USDT'}
               </button>
               
               {txHash && (
@@ -150,6 +159,7 @@ const MetaMaskPayment = () => {
                 </button>
               </div>
     </div>
+    <a href="/Registro" exact>.</a>
     </div>
   );
 };
